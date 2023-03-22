@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <nav class="navbar navbar-dark bg-primary">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="#">
+                            Nuctech
+                        </a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <h5 class="card-header">Edit Data barang</h5>
+                    <div class="card-body">
+                        <form action="" method="post" encType="multipart/form-data">
+                            <div class="row" style="margin-left: 10rem;">
+                                <div class="col">
+                                    <div class="row g-3 align-items-center">
+                                        <div class="col-1">
+                                            <label for="inputPassword6" class="col-form-label">Foto Barang</label>
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <input class="form-control" type="file" onchange="loadFile(event)"
+                                                class="btn-kirim" name="sampleFile"
+                                                accept="image/png, image/gif, image/jpeg">
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="row g-3">
+                                        <div class="col-1">
+                                            <label for="inputselling" class="col-form-label">Preview</label>
+                                        </div>
+                                        <div class="col">
+                                            <div class="col-sm-5">
+                                                <img id="output" width="400" height="auto"
+                                                    src="/images/upload/<%= item.picture %>" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="row g-3 align-items-center">
+                                        <div class="col-1">
+                                            <label for="inputnama" class="form-label">Nama Barang</label>
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <input type="text" class="form-control" id="nama" name="nama"
+                                                value="<%= item.nama %>">
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="row g-3 align-items-center">
+                                        <div class="col-1">
+                                            <label for="inputpurchase" class="form-label">Harga Beli</label>
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <input type="number" class="form-control" id="purchase" name="purchase"
+                                                value="<%= item.purchaseprice %>">
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="row g-3 align-items-center">
+                                        <div class="col-1">
+                                            <label for="inputselling" class="form-label">Harga Jual</label>
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <input type="number" class="form-control" id="selling" name="selling"
+                                                value="<%= item.sellingprice %>">
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="row g-3 align-items-center">
+                                        <div class="col-1">
+                                            <label for="inputstock" class="form-label">Stok</label>
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <input type="number" class="form-control" id="stock" name="stock"
+                                                value="<%= item.stok %>">
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="row d-flex justify-content-center">
+                                        <div class="col-3">
+                                            <a href="/barang">
+                                                <button type="button" class="btn btn-danger">Cencel</button>
+                                            </a>
+                                            <button type="submit" class="btn btn-primary">Save</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const loadFile = function (event) {
+            var reader = new FileReader();
+            reader.onload = function () {
+                var output = document.getElementById('output');
+                output.src = reader.result;
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        };
+    </script>
+</body>
+
+</html>
